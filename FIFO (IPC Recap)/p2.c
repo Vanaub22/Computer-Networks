@@ -16,8 +16,7 @@ void merging(int*a,int left,int mid,int right) {
 	for(;j<=right;j++) aux[k++]=a[j];
 	for(i=0;i<k;i++) a[left++]=aux[i];
 }
-void merge_sort(int *a,int left,int right)
-{
+void merge_sort(int *a,int left,int right) {
 	int mid;
 	if(left!=right) {
 		mid=(left+right)/2;
