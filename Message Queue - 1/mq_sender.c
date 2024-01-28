@@ -72,6 +72,7 @@ void main() {
         exit(0);
     }
     my_msg bin_msg,oct_msg,hex_msg;
+    // Assigning types for identification
     bin_msg.type=1;
     oct_msg.type=2;
     hex_msg.type=3;
