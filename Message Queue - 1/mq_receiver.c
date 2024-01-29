@@ -11,8 +11,7 @@ typedef struct {
     char mssg[MAX_DIGITS];
 } my_msg;
 int main() {
-    int msgid;
-    msgid=msgget((key_t)1234,0666);
+    int msgid=msgget((key_t)1234,0666);
     if(msgid==-1) {
         printf("Message queue could not be created.");
         exit(0);
