@@ -15,7 +15,7 @@ typedef struct {
 // Helper fn. to simply reverse a string
 void reverse(char* arr) {
     int i,n=strlen(arr);
-    for(int i=0;i<n/2;i++) {
+    for(i=0;i<n/2;i++) {
         char tmp=arr[i];
         arr[i]=arr[n-i-1];
         arr[n-i-1]=tmp;
@@ -26,7 +26,7 @@ void decimalToBinary(int x, char* bin) {
     int i=0;
     while(x>0) {
         bin[i]=(x%2)+'0';
-        x/=2;
+        x>>=1;
         i++;
     }
     bin[i]='\0';
@@ -37,7 +37,7 @@ void decimalToOctal(int x, char* oct) {
     int i=0;
     while(x>0) {
         oct[i]=(x%8)+'0';
-        x/=8;
+        x>>=3;
         i++;
     }
     oct[i]='\0';
@@ -48,7 +48,7 @@ void decimalToHexadecimal(int x, char* hex) {
     int i=0;
     while(x>0) {
         hex[i]=x%16<10?x%16+'0':(x%16)-10+'A';
-        x/=16;
+        x>>=4;
         i++;
     }
     hex[i]='\0';
@@ -56,7 +56,7 @@ void decimalToHexadecimal(int x, char* hex) {
 }
 void main() {
     int n;
-    printf("Enter a number: ");
+    printf("THIS IS THE SENDER SIDE:\nEnter a number: ");
     scanf("%d",&n);
     char hex[MAX_DIGITS],oct[MAX_DIGITS],bin[MAX_DIGITS];
     printf("The user-input number is %d\n",n);
@@ -82,5 +82,5 @@ void main() {
     msgsnd(msgid,&bin_msg,sizeof(bin_msg),0);
     msgsnd(msgid,&oct_msg,sizeof(oct_msg),0);
     msgsnd(msgid,&hex_msg,sizeof(hex_msg),0);
-    printf("\nALL DATA SENT...\n");
+    printf("ALL DATA SENT...\n");
 }

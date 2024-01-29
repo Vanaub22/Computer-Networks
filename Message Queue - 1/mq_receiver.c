@@ -5,7 +5,7 @@
 #include<sys/types.h>
 #include<sys/ipc.h>
 #include<sys/msg.h>
-#define MAX_DIGITS 50
+#define MAX_DIGITS 100
 typedef struct {
     long type;
     char mssg[MAX_DIGITS];
@@ -21,6 +21,7 @@ int main() {
     bin_msg.type=1;
     oct_msg.type=2;
     hex_msg.type=3;
+    printf("THIS IS THE RECEIVER SIDE:\n");
     msgrcv(msgid,&bin_msg,sizeof(bin_msg),1,0);
     printf("Binary representation: %s\n",bin_msg.mssg);
     msgrcv(msgid,&oct_msg,sizeof(oct_msg),2,0);
