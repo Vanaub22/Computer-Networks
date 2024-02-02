@@ -6,9 +6,9 @@
 #include<unistd.h>
 #include<fcntl.h>
 #define MYFIFO "/tmp/FIFO"
-void merging(int*a,int left,int mid,int right) {
+void merging(int*a, int left, int mid, int right) {
 	int i,j,aux[30],k=0;
-	for(i=left,j=mid+1;i<=mid&&j<=right;k++) {
+	for(i=left,j=mid+1;i<=mid && j<=right;k++) {
 		if(a[i]>a[j]) aux[k]=a[i++];
 		else aux[k]=a[j++];
 	}
@@ -16,7 +16,7 @@ void merging(int*a,int left,int mid,int right) {
 	for(;j<=right;j++) aux[k++]=a[j];
 	for(i=0;i<k;i++) a[left++]=aux[i];
 }
-void merge_sort(int *a,int left,int right) {
+void merge_sort(int *a, int left, int right) {
 	int mid;
 	if(left!=right) {
 		mid=(left+right)/2;
