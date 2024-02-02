@@ -12,7 +12,7 @@ void merging(stud_info* arr, int left, int mid, int right) {
 }
 void merge_sort(stud_info *stud_arr, int left, int right) {
     if (left<right) {
-		int mid=left+(right-left)/2;
+	int mid=left+(right-left)/2;
         merge_sort(stud_arr,left,mid);
         merge_sort(stud_arr,mid+1,right);
         merging(stud_arr,left,mid,right);
@@ -32,6 +32,6 @@ void main() {
 	merge_sort(stud_arr,1,n);
 	printf("PROCESS-2: Data after sorting the student records lexicographically: \n");
 	for(i=1;i<=n;i++) printf("Student: %s -> Roll: %d\n",stud_arr[i].name,stud_arr[i].roll);
-    for(i=0;i<=n;i++) msgsnd(msgid,&stud_arr[i],sizeof(stud_arr[i]),0);
+    	for(i=0;i<=n;i++) msgsnd(msgid,&stud_arr[i],sizeof(stud_arr[i]),0);
 	printf("PROCESS-2: All the data has been sent to the message queue from Process-2...\n");
 }
