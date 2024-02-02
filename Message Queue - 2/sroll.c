@@ -12,7 +12,7 @@ void merging(stud_info* arr, int left, int mid, int right) {
 }
 void merge_sort(stud_info *stud_arr, int left, int right) {
     if (left<right) {
-		int mid=left+(right-left)/2;
+	int mid=left+(right-left)/2;
         merge_sort(stud_arr,left,mid);
         merge_sort(stud_arr,mid+1,right);
         merging(stud_arr,left,mid,right);
