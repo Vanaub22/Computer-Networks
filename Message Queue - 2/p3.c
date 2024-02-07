@@ -1,4 +1,5 @@
 #include "custom.h"
+// Merge Sort Logic for sorting the student records in ascending order of roll numbers
 void merging(stud_info* arr, int left, int mid, int right) {
 	int i,j,k=0;
 	stud_info aux[30];
@@ -21,15 +22,18 @@ void merge_sort(stud_info *stud_arr, int left, int right) {
 void main() {
     int i,msgid=msgget((key_t)1234,0666);
 	stud_info s;
-	s.type=1;
-	msgrcv(msgid,&s,sizeof(s),1,0);
+	msgrcv(msgid,&s,sizeof(s),3,0);
 	int n=s.roll;
 	stud_info* stud_arr=(stud_info*)malloc((n+1)*sizeof(stud_info));
-	for(int i=1;i<=n;i++) msgrcv(msgid,&stud_arr[i],sizeof(stud_arr[i]),1,0);
-	printf("PROCESS-3: The data received from the message queue is as follows: \n");
-	for(i=1;i<=n;i++) printf("Student: %s -> Roll: %d\n",stud_arr[i].name,stud_arr[i].roll);
+	stud_arr[0]=s;
+	for(int i=1;i<=n;i++) msgrcv(msgid,&stud_arr[i],sizeof(stud_arr[i]),3,0);
+	printf("PROCESS-3: The data received from Process-2 (Sorted in lexicographical order of names) is as follows: \n");
+	for(i=1;i<=n;i++) printf("Student: %s | Roll: %d\n",stud_arr[i].name,stud_arr[i].roll);
 	merge_sort(stud_arr,1,n);
-	printf("PROCESS-3: Data after sorting the student records according to roll number: \n");
-	for(i=1;i<=n;i++) printf("Student: %s -> Roll: %d\n",stud_arr[i].name,stud_arr[i].roll);
-	shmctl(1234,IPC_RMID,NULL);
+	printf("Student records have been sorted in ascending order of roll numbers\n");
+	for(i=0;i<=n;i++) {
+		stud_arr[i].type=1; // Meant for Process-1
+		msgsnd(msgid,&stud_arr[i],sizeof(stud_arr[i]),0);
+	}
+	printf("PROCESS-3: All the data has been sent to the message queue from Process-3...\n");
 }
