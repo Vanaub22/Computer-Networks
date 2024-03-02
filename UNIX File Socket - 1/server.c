@@ -35,7 +35,7 @@ void main() {
             exit(0);
         }
 	
-        printf("SERVER: Received bit stream:  %s\n",buff);
+        printf("SERVER: Received bit stream: %s\n",buff);
 
         int i,parity=0;
         for(i=0;i<n;i++) {
@@ -43,7 +43,7 @@ void main() {
         }
         buff[n]=parity%2?'1':'0';
 
-        printf("SERVER: Modified bit stream:  %s\n",buff);
+        printf("SERVER: Modified bit stream: %s\n",buff);
 
         if(write(client_fd,buff,n+1)<0) {
             perror("SERVER: Write failed\n");
