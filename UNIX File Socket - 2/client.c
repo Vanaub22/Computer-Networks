@@ -15,6 +15,6 @@ void main() {
     scanf(" %[^\n]s",m.dw);
     write(client_fd,&m,sizeof(Word));
     read(client_fd,res,sizeof(res));
-    printf("Codeword Obtained from server: %s",res);
+    printf("Codeword Obtained from server: %s\n",res);
     close(client_fd);
 }

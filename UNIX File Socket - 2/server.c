@@ -43,6 +43,7 @@ void main() {
         for(i=n;i<n+m-1;i++) buff.dw[i]='0';
         strcpy(res,crc(buff.gen,buff.dw));
         write(client_fd,res,sizeof(res));
+        memset(res,0,sizeof(res));
         close(client_fd);
     }
     close(server_fd);
