@@ -42,6 +42,7 @@ void main() {
         int i,n=strlen(buff.dw),m=strlen(buff.gen);
         for(i=n;i<n+m-1;i++) buff.dw[i]='0';
         strcpy(res,crc(buff.gen,buff.dw));
+        printf("Transmitting Codeword to client...\n");
         write(client_fd,res,sizeof(res));
         memset(res,0,sizeof(res));
         close(client_fd);
