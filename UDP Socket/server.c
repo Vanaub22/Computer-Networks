@@ -9,8 +9,9 @@ void main() {
 	while(1) {
 		char buff[MAX];
 		int l=sizeof(server_addr);
+		printf("Waiting for message from Client...\n");
 		recvfrom(sock_fd,buff,MAX,0,(struct sockaddr*)&client_addr,&l);
-		printf("Message from client: %s\n", buff);
+		printf("Message from client (Dataword): %s\n", buff);
 		int m=strlen(buff),p=0;
 		while(pow(2,p)<p+m+1) p++;
 		int sz=m+p,i,buff_c=0;

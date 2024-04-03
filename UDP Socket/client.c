@@ -9,12 +9,12 @@ void main() {
 	connect(sock_fd,(struct sockaddr*)&server_addr,sizeof(struct sockaddr_in));
 	while(true) {
 		char buff[MAX];
-		printf("Enter the message: ");
+		printf("Enter the Dataword: ");
 		scanf(" %[^\n]s",buff);
 		int l=sizeof(server_addr);
 		sendto(sock_fd,buff,MAX,0,(struct sockaddr*)&server_addr,l);
 		recvfrom(sock_fd,buff,MAX,0,(struct sockaddr*)&server_addr,&l);
-		printf("Message from server: %s\n", buff);
+		printf("Message from server (Codeword): %s\n", buff);
 	}
 	close(sock_fd);
 }
