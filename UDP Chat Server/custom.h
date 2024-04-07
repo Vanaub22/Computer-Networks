@@ -14,5 +14,5 @@
 #define ip "127.0.0.1"
 
 int ss;
-
+bool chat_active=true;
 struct sockaddr_in caddr;

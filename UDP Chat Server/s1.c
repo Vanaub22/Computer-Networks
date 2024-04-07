@@ -1,7 +1,5 @@
 #include "custom.h"
 
-bool chat_active = true;
-
 void* sender(void* args) {
     char buf[MAX];
     while (chat_active) {
