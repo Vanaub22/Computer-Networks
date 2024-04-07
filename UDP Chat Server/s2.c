@@ -1,5 +1,4 @@
 #include "custom.h"
-#include <stdbool.h>
 
 bool chat_active = true;
 
