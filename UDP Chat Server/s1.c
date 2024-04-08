@@ -2,11 +2,11 @@
 
 void* sender(void* args) {
     char buf[MAX];
-    while (chat_active) {
+    while(chat_active) {
         fgets(buf, MAX, stdin);
         int length = sizeof(caddr);
         sendto(ss, buf, strlen(buf) + 1, 0, (struct sockaddr*)&caddr, length);
-        if (!strcmp("stop\n", buf)) {
+        if(!strcmp("stop\n", buf)) {
             chat_active = false;
             pthread_exit(NULL);
         }
@@ -15,18 +15,18 @@ void* sender(void* args) {
 
 void* receiver(void* args) {
     char buf[MAX];
-    while (chat_active) {
+    while(chat_active) {
         int length = sizeof(caddr);
         recvfrom(ss, buf, MAX, 0, (struct sockaddr*)&caddr, &length);
         printf("\nUser 2: %s", buf);
-        if (!strcmp("stop", buf)) {
+        if(!strcmp("stop", buf)) {
             chat_active = false;
             pthread_exit(NULL);
         }
     }
 }
 
-int main() {
+void main() {
     pthread_t t1, t2;
     ss = socket(AF_INET, SOCK_DGRAM, 0);
     struct sockaddr_in saddr, daddr;
@@ -43,5 +43,4 @@ int main() {
     pthread_join(t1, NULL);
     pthread_join(t2, NULL);
     printf("Chat terminated...\n");
-    return 0;
 }
