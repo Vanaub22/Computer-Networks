@@ -8,11 +8,11 @@ char* bit_stuffing(char *input) {
          	if(input[i]=='1') {
          		consecutive_ones++;
          		if(consecutive_ones==5) {
-                 		output[j++]='0';
-                 		consecutive_ones=0;
-             		}
+                 	output[j++]='0';
+                 	consecutive_ones=0;
+             	}
          	}
-         	else consecutive_ones = 0;
+         	else consecutive_ones=0;
          }
          output[j]='\0';
          return output;

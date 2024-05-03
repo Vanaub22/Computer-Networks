@@ -1,4 +1,4 @@
-// All necessary header files and structure definitionshave been included here
+// All necessary header files and structure definitions have been included here
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
