@@ -6,7 +6,6 @@ void main() {
 	server_addr.sin_family=AF_INET;
 	server_addr.sin_addr.s_addr=inet_addr(ip);
 	server_addr.sin_port=htons(PORT_NO);
-	connect(sock_fd,(struct sockaddr*)&server_addr,sizeof(struct sockaddr_in));
 	while(true) {
 		char buff[MAX];
 		printf("Enter the Dataword: ");
