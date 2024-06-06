@@ -10,6 +10,8 @@
     #include<netinet/in.h>
     #include<netinet/ip.h>
 To run the client-server applications, simply open two terminal windows side-by-side and run them separately. Ensure that the server is online before running the client.
+
+
 To compile:
 
     gcc <my_C_program_name>.c -o <executable_name>
